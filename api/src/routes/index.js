@@ -4,7 +4,12 @@ const { Router } = require('express');
 
 
 const router = Router();
+const recipes = require("./recipes");
+const diets = require("./diets");
 
+
+router.use("/", recipes);
+router.use("/", diets);
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
