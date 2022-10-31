@@ -1,4 +1,4 @@
-const { Recipe, Diet} = require("../db");
+const { Recipe, Diet, Op} = require("../db");
 const axios = require("axios");
 const { KEY, KEY2 } = process.env;
 
@@ -14,6 +14,7 @@ const getRecipeByName = async(name) =>{
                     id: rec.id,
                     name: rec.title,
                     credits: rec.creditsText,
+                    score: rec.healthScore,
                     source: rec.sourceUrl,
                     time: rec.readyInMinutes,
                     cheap: rec.cheap,
@@ -35,7 +36,7 @@ const getRecipeByName = async(name) =>{
             ],
         });
         
-        const namedRecipe = dbRecipes.filter((recipe) =>recipe.name.includes(name))
+        const namedRecipe = dbRecipes.filter((recipe) =>recipe.name.includes(name.toLowerCase()))
         console.log(dbRecipes);
 
         return [...namedApiRecipes, ...namedRecipe];

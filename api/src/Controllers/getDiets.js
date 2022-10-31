@@ -19,11 +19,12 @@ const getDiets = async() => {
     //     {id: 13, name: "dairy free"}    ]
     // const setDiets =  await Diet.bulkCreate(diets);
     // return setDiets;}
-//The commented function was used to charge all the diets in the database in order to have diets in our call:D
+//?The commented function was used to charge all the diets in the database in order to have diets in our call:D
 const dbDiets = await Diet.findAll()
-return dbDiets;
+return dbDiets; 
+}
 
- }
+
 module.exports = {getDiets};
 //     // const diets = {id: 1, name: "gluten free"}
 

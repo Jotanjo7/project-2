@@ -14,6 +14,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
     },
+    score:{
+      type: DataTypes.STRING,
+      defaultValue: "The user could calculate the healthscore of this recipe, sorry :p"
+    },
     credits:{
       type: DataTypes.STRING,
       defaultValue: "The user who posted this recipe was a little lazy and aparently is anonymous"
@@ -28,18 +32,18 @@ module.exports = (sequelize) => {
     },
     cheap:{
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true
     },
     image:{
       type: DataTypes.STRING,
       defaultValue: "''"
     },
     summary: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,//!datatypes.string(255)
       defaultValue: "The creator of this recipe aparently could not write any summary, sorry:p", 
     },
     steps: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       defaultValue: "Aparently the creator was not able to give us the secret of this recipe, sorry:p" 
     }
   },{timestamps: false,});

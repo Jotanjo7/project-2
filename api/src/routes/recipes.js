@@ -40,8 +40,8 @@ router.get("/recipes", async(req, res)=> {
 
 router.post("/recipes", async(req, res) => {
     try{
-        const { name, credits, source, time, cheap, image, summary, steps, diets} = req.body;
-        const createdRecipe = await createRecipe(name, credits, source, time, cheap, image, summary, steps, diets);
+        const { name, credits, score, source, time, cheap, image, summary, steps, diets} = req.body;
+        const createdRecipe = await createRecipe(name, credits, score, source, time, cheap, image, summary, steps, diets);
         res.send(createdRecipe)
 }catch(err){
     console.log(err)
