@@ -5,3 +5,6 @@ export const CLEAN_DETAIL = "CLEAN_DETAIL";
 export const GET_DETAILS = "GET_DETAILS";
 export const ORDER_NAMES = "ORDER_NAMES";
 export const FILTER_DIETS = "FILTER_DIETS";
+export const SET_PAGE_INDEX = "SET_PAGE_INDEX";
+export const ORDER_HSCORE = "ORDER_HSCORE";
+export const SEARCH = "SEARCH"

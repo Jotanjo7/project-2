@@ -64,7 +64,7 @@ export const Forms = () => {
         })
     };//post {name: papas, cheap: true, diets: vegan, credits: "", }
 
-    const handleSubmit= (e) => {
+    const handleSubmit= (e) => {//!lets make an for in loop in order to snd a new onject without empty strings
         e.preventDefault();
         if(!input.name) return alert("please make sure to have filled at leats name and cheap, in case you dont want to give the other, do as you want");
         dispatch(createRecipe(input));

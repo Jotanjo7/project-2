@@ -1,4 +1,4 @@
-import { GET_RECIPES, GET_DIETS, CLEAN_DETAIL, GET_DETAILS, ORDER_NAMES, FILTER_DIETS } from "./actionTypes";
+import { GET_RECIPES, GET_DIETS, CLEAN_DETAIL, GET_DETAILS, ORDER_NAMES, FILTER_DIETS, SET_PAGE_INDEX, ORDER_HSCORE, SEARCH } from "./actionTypes";
 import axios from "axios";
 
 export const getRecipes = () => {
@@ -61,11 +61,32 @@ export const orderNames = (payload) =>{
 };
 
 export const filterDiets = (payload)=>{
-    if(payload === "All"){
-       return getRecipes();
-    }else{
     return {
         type: FILTER_DIETS,
         payload,
+    }
+};
+
+export const setIndex = (payload) => {
+    return {type: SET_PAGE_INDEX,
+        payload,
+}};
+
+export const orderHScore = (payload) => {
+    return {type: ORDER_HSCORE, 
+        payload,
+    }
+};
+
+export const searching = (name) => {
+    return function(dispatch){
+    try{
+        axios.get(`http://localhost:3001/recipes?name=${name}`)
+        .then((data) => response.data)
+        .then((data) => dispatch({type: SEARCH, payload: data}))
+        
+    }
+    catch(error){
+        console.log(error.message)
     }}
 }

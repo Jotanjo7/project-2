@@ -1,0 +1,21 @@
+.pagination{
+    display: flex;
+    gap: 4px;
+}
+.pagination > button {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 0;
+    border-radius: 20%;
+    background: #262528;
+    color: #f9f9f9;
+}
+.pagination >button.active{
+    background: #bf4f5d;
+}
+.pagination>button:disabled {
+    opacity: 0.25;
+}

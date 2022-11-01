@@ -4,16 +4,16 @@ const { KEY, KEY2 } = process.env;
 
 const getRecipeById = async(id) => {
    if(id.length < 11){ try{
-        const idApi = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY}&&addRecipeInformation=true`)
+        const idApi = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY2}&&addRecipeInformation=true`)
         const  { data }  = idApi;
         return{
             id: data.id,
         name: data.title,
-        credits: data.creditsText,
+        credits: data.creditsText, 
         score: data.healthScore,
         source: data.sourceUrl,
         cheap: data.cheap,
-        summary: data.summary,
+        summary: data.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),
         image: data.image,
         steps: (data.analyzedInstructions[0] && data.analyzedInstructions[0].steps?data.analyzedInstructions[0].steps.map(item=>item.step).join(" || "):'In this recipe, there are not steps'),
         diets: data.diets? data.diets.map((diet) => diet) : "This one has no kind of diet:p"

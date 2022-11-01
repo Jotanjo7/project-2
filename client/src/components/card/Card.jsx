@@ -12,6 +12,7 @@ export default function Card(props) {
     <img src={props.image} alt={props.name} />
     <h2>Recipe:{props.name}</h2>
     <h4>Time:{props.time} minutes estimated</h4>
+    <h4>Score: {props.score}</h4>
     <p>{props.id}</p>
     </div>
     <Link to={`/recipes/${props.id}`}>

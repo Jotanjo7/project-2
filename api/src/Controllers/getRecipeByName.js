@@ -5,7 +5,7 @@ const { KEY, KEY2 } = process.env;
 
 const getRecipeByName = async(name) =>{
     try{
-        const namedApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&addRecipeInformation=true&query=${name}`);
+        const namedApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY2}&addRecipeInformation=true&query=${name}`);
         const { results } = namedApi.data;
         let namedApiRecipes = [];
         if(results.length > 0){
@@ -18,7 +18,7 @@ const getRecipeByName = async(name) =>{
                     source: rec.sourceUrl,
                     time: rec.readyInMinutes,
                     cheap: rec.cheap,
-                    summary: rec.summary,
+                    summary: rec.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),
                     image: rec.image,
                     steps: (rec.analyzedInstructions[0] && rec.analyzedInstructions[0].steps?rec.analyzedInstructions[0].steps.map(item=>item.step).join(" || "):'In this recipe, there are not steps'),
                     diets: rec.diets? rec.diets.map((diet) => diet) : "This one has no kind of diet:p"
