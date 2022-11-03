@@ -1,0 +1,12 @@
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 16rem));
+    /* grid-template-columns: repeat(3, 1fr); */
+    gap: 3rem;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+body {
+    background-color: #ffffff;
+}

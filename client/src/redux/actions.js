@@ -82,11 +82,11 @@ export const searching = (name) => {
     return function(dispatch){
     try{
         axios.get(`http://localhost:3001/recipes?name=${name}`)
-        .then((data) => response.data)
+        .then((data) => data.data)
         .then((data) => dispatch({type: SEARCH, payload: data}))
         
     }
     catch(error){
         console.log(error.message)
     }}
-}
+};

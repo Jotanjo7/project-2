@@ -1,0 +1,109 @@
+.card {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 240px;
+    height: 240px;
+    margin: 0;
+    padding: 0;
+    background: rgb(196, 223, 170);
+    font-family: sans-serif;
+    box-shadow: 0px 2px 30px #cdd0cd;
+}
+.card .image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.card .image img {
+    width: 100%;
+    transition: .5s;
+}
+.card:hover .image img {
+    opacity: .5;
+    transform: translateX(30%);/*100%*/
+}
+.card .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;/*100%*/
+    height: 100%;
+    background: rgb(196, 223, 170);
+    transition: .5s;
+    transform-origin: left;
+    transform: perspective(2000px) rotateY(-90deg);
+    font-family: 'Raleway', sans-serif;
+    object-fit: cover;
+
+}
+.card:hover .details {
+    transform: perspective(2000px) rotateY(0deg);
+}
+.card .details .center {
+    padding: 15px;
+    text-align: center;
+    background: #FEFBF3;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+}
+.card .details .center h1 {
+    margin: 0;
+    padding: 0;
+    color: #92A9BD;
+    line-height: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.card .details .center h2 {
+    font-size: 1.1rem;
+    color: #BBBBBB;
+    line-height: 1.3rem;
+
+}
+.card .details .center p {
+    margin: 10px 0;
+    padding: 0;
+    color: #aaa;
+}
+p > .spancito {
+    font-weight: 600;
+    color: #92A9BD;
+}
+.description {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+button.access {
+    color: #92A9BD;
+    font-weight: 600;
+    justify-self: center;
+    text-decoration: none;
+    background: transparent;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    
+}
+button.access:hover {
+    color: #a2b9cd;
+}
+h3 {
+    color: #fff;
+    position: relative;
+    text-align: center;
+    font-size: 0.85rem;
+    line-height: 1.1rem;
+    margin: auto;
+    padding-top: 5px;
+}
+.image{
+    padding-bottom: 40px;
+}

@@ -1,8 +1,10 @@
+import "./home.css"
 import { React, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getRecipes, orderNames, filterDiets, getDiets, orderHScore } from "../../redux/actions"
+import { getRecipes, orderNames, filterDiets, getDiets, orderHScore, setIndex } from "../../redux/actions"
 import  Card  from "../card/Card"
 import { Pagination } from "../pagination/Pagination";
+import { SearchBar } from "../search bar/SearchBar";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -32,7 +34,8 @@ const Home = () => {
         dispatch(orderNames(order))
     }
     const handleFilter = (e) =>{
-        dispatch(filterDiets(e.target.value))        
+        dispatch(setIndex(1))     
+        dispatch(filterDiets(e.target.value))
     }
     const handleScore = (e) => {
         setScore(!score);
@@ -41,11 +44,13 @@ const Home = () => {
 
     return (
         <div>
+            <div className="options bar">
+            <SearchBar />
             <div>
-                <button onClick={(e) => handleSort(e)}>ASC/DESC</button>
+                <button onClick={(e) => handleSort(e)}>{order ?(<i className="fa-solid fa-arrow-up-wide-short">A-Z</i>):(<i className="fa-solid fa-arrow-down-wide-short">Z-A</i>)}</button>
             </div>
             <div>
-                <button onClick={(e) => handleScore(e)}>{score ?(<i>lower scores</i>):(<i>higher scores</i>)}</button>
+                <button onClick={(e) => handleScore(e)}>{score ?(<i className="fa-solid fa-arrow-up-wide-short">SCORE</i>):(<i className="fa-solid fa-arrow-down-wide-short">SCORE</i>)}</button>
             </div>
             <div>
                 <select className="selections" onChange={(e) => handleFilter(e)}>
@@ -57,11 +62,15 @@ const Home = () => {
 
                 </select>
             </div>
+
+        <div className="wrapper">
             {currentRecipes ? currentRecipes.map((recipe) => (
-                <Card key={recipe.id} name={recipe.name} score={recipe.score} id={recipe.id} time={recipe.time} image={recipe.image}/>
+                <Card key={recipe.id} diets={recipe.diets} name={recipe.name} score={recipe.score} id={recipe.id} time={recipe.time} image={recipe.image}/>
             )) : (<h3>Waiting for recipes:P</h3>)}
-        <div>
-                {recipes.length ? (<Pagination pags={Math.ceil(recipes.length/9)} quantity={recipes.length}/>) : (<h1>Loading...</h1>)}
+        </div>
+            <div>
+                {recipes && recipes.length ? (<Pagination pags={Math.ceil(recipes.length/9)} quantity={recipes.length}/>) : (<h1>Loading...</h1>)}
+            </div>
         </div>
         </div>
             

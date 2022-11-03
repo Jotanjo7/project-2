@@ -15,7 +15,6 @@ export const Forms = () => {
         source: "",
         time: "",
         score: "",
-        image: "",
         summary: "",
         steps: "",
         diets: []
@@ -36,10 +35,29 @@ export const Forms = () => {
     const validator = (input) => {
         const errors = {};
         const scores = Number(input.score);
-        if(!input.name) errors.name = "Name is necessary";
+        const times = Number(input.time)
+        if(!input.name) errors.name = "Name of the recipe is necessary";
         else if(/[^A-Za-z0-9 ]+/g.test(input.name)){
             errors.name= "Name cannot contain special characters"
         }
+        if(!input.credits) errors.credits = "Credits are necessary";
+        else if(/[^A-Za-z0-9 ]+/g.test(input.credits)){
+            errors.credits= "Credits cannot contain special characters"
+        }
+        if(!input.source) errors.source = "Source is necessary";
+        else if(/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi.test(input.source)){
+            errors.source= "Source cannot contain special characters"
+        }
+        if(!input.time) errors.time = "Time is necessary";
+        else if(times >999 || times < 1 ){
+            errors.time= "Time must be only numbers, and the limit will be four digits"
+        }
+        if(!input.summary) errors.summary = "Summary is necessary";
+        else if(input.summary.length === 256) errors.summary = "you have exceed the limit of the summary"        
+        if(!input.steps) errors.steps = "Steps are necessary";
+        else if(input.steps.length === 256) errors.steps = "you have exceed the limit of the steps"
+
+        
         if(scores > 100 || scores < 1)errors.score="this value must be between 1-100";
 
         return errors;
@@ -55,6 +73,7 @@ export const Forms = () => {
         setInput((state)=>{
             console.log(state)
             if(e.target.name === "diets"){
+
                 return {...state, diets: [...state.diets, e.target.value]}
             } else{
                 return {
@@ -66,13 +85,12 @@ export const Forms = () => {
 
     const handleSubmit= (e) => {//!lets make an for in loop in order to snd a new onject without empty strings
         e.preventDefault();
-        if(!input.name) return alert("please make sure to have filled at leats name and cheap, in case you dont want to give the other, do as you want");
+        if(!input.name) return alert("please make sure to have filled at leats name, in case you dont want to fill the others, do as you want");
         dispatch(createRecipe(input));
         alert("nice, you have acomplished this form and now we have that recipe");
         setInput({
         credits: "",
         diets: [],
-        image: "",
         name: "",
         score: "",
         source: "",
@@ -98,26 +116,38 @@ export const Forms = () => {
                 </div>
             </div>
             <div>
-                <input name="credits" type="text" value={input.credits} placeholder="here you can submit your name" onChange={(e) => handleChange(e)} />
+                <input name="credits" type="text" value={input.credits} placeholder="submit your name" onChange={(e) => handleChange(e)} />
+                <div>
+                {error.credits && <p>{error.credits}</p>}
+                </div>
             </div>
             <div>
-                <input name="source" type="text" value={input.source} placeholder="here you can put an url" onChange={(e) => handleChange(e)} />
+                <input name="source" type="text" value={input.source} placeholder="link to your website" onChange={(e) => handleChange(e)} />
+                <div>
+                {error.source && <p>{error.source}</p>}
+                </div>
             </div>
             <div>
-                <input name="time" type="number" value={input.time} placeholder="now this one can have the recipe`s time" onChange={(e) => handleChange(e)} />
+                <input name="time" type="number" value={input.time} placeholder="minutes that this recipe takes" onChange={(e) => handleChange(e)} />
+                <div>
+                {error.time && <p>{error.time}</p>}
+                </div>
             </div>
             <div>
                 <input name="score" type="number" value={input.score} placeholder="you can give us the health score" onChange={(e) => handleChange(e)} />
                 {error.score && <p>{error.score}</p>}
             </div>
             <div>
-                <input name="image" type="text" value={input.image} placeholder="enter an image url of the recipe" onChange={(e) => handleChange(e)} />
-            </div>
-            <div>
                 <input name="summary" type="textarea" value={input.summary} placeholder="enter a summary of the recipe" onChange={(e) => handleChange(e)} />
+                <div>
+                {error.summary && <p>{error.summary}</p>}
+                </div>
             </div>
             <div>
                 <input name="steps" type="textarea" value={input.steps} placeholder="please give us steps for the recipes" onChange={(e) => handleChange(e)} />
+                <div>
+                {error.steps && <p>{error.steps}</p>}
+                </div>
             </div>
             <div>
                 <select name="diets" onChange={(e) => handleSelect(e)}>
@@ -141,4 +171,4 @@ export const Forms = () => {
         </div>
         </div>
     )
-}//!recordar hacer el mapeo de las seleccionadas
+}

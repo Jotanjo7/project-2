@@ -4,7 +4,7 @@ const { KEY, KEY2 } = process.env;
 
 const getRecipeById = async(id) => {
    if(id.length < 11){ try{
-        const idApi = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY2}&&addRecipeInformation=true`)
+        const idApi = await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${KEY}&&addRecipeInformation=true`)
         const  { data }  = idApi;
         return{
             id: data.id,
