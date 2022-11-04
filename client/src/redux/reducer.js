@@ -7,7 +7,7 @@ const initialState = {
     diets: [],
     details: {},
     pageIndex: 1
-};//!hacer ordenamiento de healthscore
+};
 
 export default function rootReducer(state=initialState, action) {
     switch(action.type){

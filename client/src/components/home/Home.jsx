@@ -44,34 +44,36 @@ const Home = () => {
 
     return (
         <div>
-            <div className="options bar">
-            <SearchBar />
-            <div>
-                <button onClick={(e) => handleSort(e)}>{order ?(<i className="fa-solid fa-arrow-up-wide-short">A-Z</i>):(<i className="fa-solid fa-arrow-down-wide-short">Z-A</i>)}</button>
+        <div className="optionsbar">
+            <div className="bar">
+                <SearchBar />
             </div>
-            <div>
-                <button onClick={(e) => handleScore(e)}>{score ?(<i className="fa-solid fa-arrow-up-wide-short">SCORE</i>):(<i className="fa-solid fa-arrow-down-wide-short">SCORE</i>)}</button>
-            </div>
-            <div>
-                <select className="selections" onChange={(e) => handleFilter(e)}>
-                    <option value="All">Diets: All</option>
-                    {diets?.map((diet) => (
-                        <option value={diet.name} key={diet.id} >{diet.name}</option>
-                        ))
+            <div className="options">
+                <div>
+                    <button onClick={(e) => handleSort(e)}>{order ?(<i className="fa-solid fa-arrow-up-wide-short">A-Z</i>):(<i className="fa-solid fa-arrow-down-wide-short">Z-A</i>)}</button>
+                </div>
+                <div>
+                    <button onClick={(e) => handleScore(e)}>{score ?(<i className="fa-solid fa-arrow-up-wide-short">SCORE</i>):(<i className="fa-solid fa-arrow-down-wide-short">SCORE</i>)}</button>
+                </div>
+                <div>
+                    <select className="selections" onChange={(e) => handleFilter(e)}>
+                        <option value="All">Diets: All</option>
+                        {diets?.map((diet) => (
+                        <option value={diet.name} key={diet.id} >{diet.name}</option>))
                         }
-
-                </select>
+                    </select>
+                </div>
             </div>
+        </div>
 
         <div className="wrapper">
             {currentRecipes ? currentRecipes.map((recipe) => (
                 <Card key={recipe.id} diets={recipe.diets} name={recipe.name} score={recipe.score} id={recipe.id} time={recipe.time} image={recipe.image}/>
             )) : (<h3>Waiting for recipes:P</h3>)}
         </div>
-            <div>
+            <div className="pags">
                 {recipes && recipes.length ? (<Pagination pags={Math.ceil(recipes.length/9)} quantity={recipes.length}/>) : (<h1>Loading...</h1>)}
             </div>
-        </div>
         </div>
             
     );

@@ -21,8 +21,11 @@ const handleClick = () => {
             <Link to="/about" className="route">
                 About
             </Link>
+            <Link to="/forms" className="route">
+                Create
+            </Link>
             <Link to="/userInfo" className="route">
-            Info del creador
+                User Info
             </Link>
         </div>
         <div className={`toggle ${stado && "open"}`} onClick={handleClick}>

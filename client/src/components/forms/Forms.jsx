@@ -81,11 +81,11 @@ export const Forms = () => {
                 }
             }
         })
-    };//post {name: papas, cheap: true, diets: vegan, credits: "", }
+    };
 
-    const handleSubmit= (e) => {//!lets make an for in loop in order to snd a new onject without empty strings
+    const handleSubmit= (e) => {
         e.preventDefault();
-        if(!input.name) return alert("please make sure to have filled at leats name, in case you dont want to fill the others, do as you want");
+        if(!input.name || !input.credits || !input.score || !input.source || !input.steps || !input.summary || !input.time) return alert("please make sure to have filled at leats name, in case you dont want to fill the others, do as you want");
         dispatch(createRecipe(input));
         alert("nice, you have acomplished this form and now we have that recipe");
         setInput({
@@ -97,8 +97,7 @@ export const Forms = () => {
         steps: "",
         summary: "",
         time: ""
-        })
-    };
+        })};
     const handleDelete= (e) => {
         setInput({
             ...input, diets: input.diets.filter((diet) => diet !== e )
@@ -107,8 +106,10 @@ export const Forms = () => {
 
 
     return (
-        <div>
+        <div className="formcard">
         <form onSubmit={(e) => handleSubmit(e)}>
+            <div className="title">Welcome!</div>
+            <div className="subtitle">Let's create your recipe</div>
             <div>
                 <input name="name" type="text" value={input.name} placeholder="enter your recipe`s name" onChange={(e) => handleChange(e)} />
                 <div>
@@ -162,10 +163,10 @@ export const Forms = () => {
                 <button type="submit">Add recipe</button>
             </div>
         </form>
-        <div>
+        <div className="selectedDiets">
             {input.diets ? input.diets.map((diet, index) => (
                 <button key={index} onClick={() => handleDelete(diet)}>
-                    {diet} <span></span>
+                    {diet} <span><i className="fa-regular fa-circle-xmark"></i></span>
                 </button>
             )): alert("this one has already been selected")}
         </div>
