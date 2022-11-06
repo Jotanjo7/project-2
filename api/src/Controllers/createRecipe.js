@@ -11,8 +11,6 @@ const createRecipe = async( name, credits, score, source, time, cheap, image, su
     });
 
     recipe.addDiet(recipeDiets);
-    console.log(recipe)
-    console.log(recipeDiets)
     return recipe;
 }
 

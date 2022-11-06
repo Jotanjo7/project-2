@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #fff;
+    background: #B1AFFF;
 };
 
 .navbar > .logo{
@@ -14,7 +14,7 @@
 }
 
 .navbar > .links > .route {
-    color: #aaaaaa;
+    color: #414141;
     font-size: 16px;
     text-decoration: none;
     margin: 15px;
@@ -34,7 +34,7 @@
     bottom: 0;
     width: 0;
     height: 2px;
-    background: #11aa00;
+    background: #C4DFAA;
     transition: all 0.45s;
 }
 

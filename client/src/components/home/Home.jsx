@@ -67,7 +67,7 @@ const Home = () => {
         </div>
 
         <div className="wrapper">
-            {currentRecipes ? currentRecipes.map((recipe) => (
+            {currentRecipes ? currentRecipes.map((recipe) => (                
                 <Card key={recipe.id} diets={recipe.diets} name={recipe.name} score={recipe.score} id={recipe.id} time={recipe.time} image={recipe.image}/>
             )) : (<h3>Waiting for recipes:P</h3>)}
         </div>

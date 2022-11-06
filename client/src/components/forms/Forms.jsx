@@ -1,3 +1,4 @@
+import "./forms.css";
 import { React, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createRecipe, getDiets } from "../../redux/actions";
@@ -106,70 +107,87 @@ export const Forms = () => {
 
 
     return (
-        <div className="formcard">
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <div className="container">
+        <form className="formcard" onSubmit={(e) => handleSubmit(e)}>
             <div className="title">Welcome!</div>
             <div className="subtitle">Let's create your recipe</div>
-            <div>
-                <input name="name" type="text" value={input.name} placeholder="enter your recipe`s name" onChange={(e) => handleChange(e)} />
+            <div className="input-container ic1">
+                <input id="name" name="name" type="text" className="input" value={input.name} onChange={(e) => handleChange(e)} />
+                <div className="cut" />
+                <label htmlFor="name" className="placeholder">Recipe</label>
                 <div>
                 {error.name && <p>{error.name}</p>}
                 </div>
             </div>
-            <div>
-                <input name="credits" type="text" value={input.credits} placeholder="submit your name" onChange={(e) => handleChange(e)} />
+            <div className="input-container ic2">
+                <input id="credits" name="credits" className="input" type="text" value={input.credits} onChange={(e) => handleChange(e)} />
+                <div className="cut" />
+                <label htmlFor="credits" className="placeholder">Name</label>
                 <div>
                 {error.credits && <p>{error.credits}</p>}
                 </div>
             </div>
-            <div>
-                <input name="source" type="text" value={input.source} placeholder="link to your website" onChange={(e) => handleChange(e)} />
+            <div className="input-container ic2">
+                <input className="input" id="source" name="source" type="text" value={input.source} onChange={(e) => handleChange(e)} />
+                <div className="cut" />
+                <label htmlFor="source" className="placeholder">Website</label>
                 <div>
                 {error.source && <p>{error.source}</p>}
                 </div>
             </div>
-            <div>
-                <input name="time" type="number" value={input.time} placeholder="minutes that this recipe takes" onChange={(e) => handleChange(e)} />
+            <div className="input-container ic2">
+                <input className="input" id="time" name="time" type="number" value={input.time} onChange={(e) => handleChange(e)} />
+                <div className="cut" />
+                <label htmlFor="time" className="placeholder">Duration{"("}m{")"}</label>
                 <div>
                 {error.time && <p>{error.time}</p>}
                 </div>
             </div>
-            <div>
-                <input name="score" type="number" value={input.score} placeholder="you can give us the health score" onChange={(e) => handleChange(e)} />
+            <div className="input-container ic2">
+                <input className="input" id="score" name="score" type="number" value={input.score} onChange={(e) => handleChange(e)} />
+                <div className="cut" />
+                <label htmlFor="score" className="placeholder">Healthscore</label>
+                <div>
                 {error.score && <p>{error.score}</p>}
+                </div>
             </div>
-            <div>
-                <input name="summary" type="textarea" value={input.summary} placeholder="enter a summary of the recipe" onChange={(e) => handleChange(e)} />
+            <div className="input-container ic2">
+                <input className="input" id="summary" name="summary" type="textarea" value={input.summary} onChange={(e) => handleChange(e)} />
+                <div className="cut" />
+                <label htmlFor="summary" className="placeholder">Summary</label>
                 <div>
                 {error.summary && <p>{error.summary}</p>}
                 </div>
             </div>
-            <div>
-                <input name="steps" type="textarea" value={input.steps} placeholder="please give us steps for the recipes" onChange={(e) => handleChange(e)} />
+            <div className="input-container ic2">
+                <input className="input" id="steps" name="steps" type="textarea" value={input.steps} onChange={(e) => handleChange(e)} />
+                <div className="cut" />
+                <label htmlFor="steps" className="placeholder">Steps</label>
                 <div>
                 {error.steps && <p>{error.steps}</p>}
                 </div>
             </div>
-            <div>
-                <select name="diets" onChange={(e) => handleSelect(e)}>
+            <div className="input-container ic2">
+                <select className="input" id="diets" name="diets" onChange={(e) => handleSelect(e)}>
                 <option key="null"></option>
                     {diets.length && diets.map((dieta) =>(
                         <option value={dieta.name} key={dieta.id}>{dieta.name}</option>
                     ))}
                 </select>
+                <div className="cut" />
+                <label htmlFor="diets" className="placeholder">Diets</label>
                 
             </div>
-            <div>
-                <button type="submit">Add recipe</button>
+            <div className="selectedDiets">
+                {input.diets ? input.diets.map((diet, index) => (
+                    <button className="erase" key={index} onClick={() => handleDelete(diet)}>
+                    <span className="iconie"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" /></svg></span><span className="textie">{diet}</span></button>
+                )): alert("this one has already been selected")}
             </div>
-        </form>
-        <div className="selectedDiets">
-            {input.diets ? input.diets.map((diet, index) => (
-                <button key={index} onClick={() => handleDelete(diet)}>
-                    {diet} <span><i className="fa-regular fa-circle-xmark"></i></span>
-                </button>
-            )): alert("this one has already been selected")}
-        </div>
+            <div>
+                <button className="submit" type="submit">Add recipe</button>
+            </div>
+        </form>        
         </div>
     )
 }
