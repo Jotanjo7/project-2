@@ -1,0 +1,19 @@
+.landingBody{
+    align-items: center;
+    background-color: #52575D;
+    background-image: url("https://www.transparenttextures.com/patterns/food.png");
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 120vh;
+}
+.landingContainer{
+    background-color: #90C8AC;
+    position: relative;
+    top: 20px;
+    border-radius: 40px;
+    box-sizing: border-box;
+    height: 500px;
+    padding: 40px 20px;
+    width: 500px; 
+}
