@@ -1,19 +1,117 @@
-.landingBody{
-    align-items: center;
-    background-color: #52575D;
-    background-image: url("https://www.transparenttextures.com/patterns/food.png");
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    height: 120vh;
-}
-.landingContainer{
-    background-color: #90C8AC;
-    position: relative;
-    top: 20px;
-    border-radius: 40px;
-    box-sizing: border-box;
-    height: 500px;
-    padding: 40px 20px;
-    width: 500px; 
-}
+    .landingBody{
+        align-items: center;
+        background-color: #52575D;
+        background-image: url("https://www.transparenttextures.com/patterns/food.png");
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        height: 120vh;
+    }
+    .landingContainer{
+        background-color: #41444B;
+        position: relative;
+        top: 20px;
+        border-radius: 40px;
+        box-sizing: border-box;
+        height: 500px;
+        padding: 40px 20px;
+        width: 500px; 
+    }
+    .landingContainer h1{
+        color: #191919;
+    }
+    .landingImage{
+        height: 364px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+        align-content: space-between;
+    }
+    .landingImage img{
+        height: 170px;
+        width: 160px;
+    }
+    .button button {
+        padding: 15px 25px;
+        border: unset;
+        border-radius: 15px;
+        color: #212121;
+        z-index: 1;
+        background: #e8e8e8;
+        position: absolute;
+        font-weight: 1000;
+        font-size: 17px;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        transition: all 250ms;
+        overflow: hidden;
+        transform: translateX(-335px) translateY(550px);
+
+    }
+    
+    .button button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 15px;
+        background-color: #212121;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        transition: all 250ms
+    }
+    
+    .button button:hover {
+        color: #e8e8e8;
+    }
+    
+    .button button:hover::before {
+        width: 100%;
+    }
+
+    .landingText{
+        position: absolute;
+        margin-top: 300px;
+        transform: translateX(-400px);
+        background: #CABFAB;
+        border-radius: 20%;
+        display: flex;
+        width: 210px;
+        text-align: justify;
+        font-size: 1rem;
+    }
+    .landingText p {
+        padding: 1px 3px;
+    }
+
+        @media (max-width: 700px){
+            .button button{
+                transform: translateX(-210px) translateY(560px);
+            }
+            .landingImage img{
+                display: none;
+            }
+            .landingImage img#Ramen{
+                display: block;
+                width: 80%;
+                height: 80%;
+            }
+            .landingContainer{
+                width: 320px;
+                height: 520px;
+                transform: translateX(10px);
+            }
+            .landingBody{
+                height: 110vh;
+            }
+            .landingText{
+                transform: translateX(-130px) translateY(-180px);
+            }
+            .landingTitle{
+                transform: translateY(-35px) translateX(15px);
+            }
+
+        }

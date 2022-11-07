@@ -72,7 +72,9 @@ const Home = () => {
             )) : (<h3>Waiting for recipes:P</h3>)}
         </div>
             <div className="pags">
-                {recipes && recipes.length ? (<Pagination pags={Math.ceil(recipes.length/9)} quantity={recipes.length}/>) : (<h1>Loading...</h1>)}
+                {recipes && recipes.length 
+                ? (<Pagination pags={Math.ceil(recipes.length/9)} quantity={recipes.length}/>) 
+                : (<div class="loader"><div></div></div>)}
             </div>
         </div>
             

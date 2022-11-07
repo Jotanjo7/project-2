@@ -1,5 +1,10 @@
+import img from "./cheese-pizza-comfort-food-recipes-1627586748.jpeg";
+import img2 from "./Bucatini.jpg";
+import img3 from "./Easy Chicken and Broccoli - The Salty Marshmallow.png";
+import img4 from "./Rabokki (Ramen + Dukboki), the Ultimate Korean Street Food.jfif";
 import "./landingPage.css";
 import { React } from "react";
+import { Link } from "react-router-dom";
 
 export const LandingPage = () =>{
 
@@ -14,12 +19,20 @@ export const LandingPage = () =>{
                     <h1>Welcome to my food project!</h1>
                 </div>
                 <div className="landingImage">
-                    <img src="" alt=""/>
+                    <img id="pizza" src={img} alt="Pizza photo"/>
+                    <img id="Bucatini" src={img2} alt="Bucatini" />
+                    <img id="Chicken" src={img3} alt="Chicken" />
+                    <img id="Ramen" src={img4} alt="Ramen" />
                 </div>
-                <div className="landingSub">
-                    <h3>This is an application I made using HTML, CSS and Javascript, and applications like React, Redux, Express.js, Node.js, PostgreSQL and Sequelize as my ORM. These are things I've learned while I was Studying in fullstack web developer from "Soy Henry".</h3>
-                    <p>In this SPA, single page application, you can check many recipes, search them, order them by name or their health-score, you can also filter them by their diet, you can even upload your own recipe and find it there. I invite you to check this application out, I'm sure you will enjoy this page.</p>
-                </div>
+
+            </div>
+            <div className="button">
+            <Link to="/home">
+                <button>Get started</button>
+            </Link>
+            </div>
+            <div className="landingText">
+                <p>Come and search all kind of recipes, look for all kind of diets and also see how much healthy these ones can be. <b>Try creating a recipe for this App too!</b></p>
             </div>
         </div>
     )
