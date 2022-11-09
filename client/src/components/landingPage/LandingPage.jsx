@@ -19,7 +19,7 @@ export const LandingPage = () =>{
                     <h1>Welcome to my food project!</h1>
                 </div>
                 <div className="landingImage">
-                    <img id="pizza" src={img} alt="Pizza photo"/>
+                    <img id="pizza" src={img} alt="Pizza"/>
                     <img id="Bucatini" src={img2} alt="Bucatini" />
                     <img id="Chicken" src={img3} alt="Chicken" />
                     <img id="Ramen" src={img4} alt="Ramen" />

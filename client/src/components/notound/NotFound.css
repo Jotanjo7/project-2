@@ -1,0 +1,7 @@
+.closed{
+    display: none;
+}
+.errorBody{
+    height: 100vh;
+    background-color: #dad1da;
+}

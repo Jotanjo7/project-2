@@ -10,6 +10,7 @@ const getRecipeById = async(id) => {
             id: data.id,
         name: data.title,
         credits: data.creditsText, 
+        dish: data.dishTypes.map((el)=> el),
         score: data.healthScore,
         source: data.sourceUrl,
         cheap: data.cheap,

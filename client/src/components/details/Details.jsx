@@ -16,9 +16,8 @@ export const Details = (props) => {
             dispatch(cleanDetail());
         };
     }, [dispatch, id]);
-    console.log(details.steps)
     const detalles = details
-    console.log(detalles);
+    console.log(detalles.dish);
 
     return(<div>
     <div className="cardbody">
@@ -30,6 +29,10 @@ export const Details = (props) => {
     <ul>
         {details.diets && details.diets.length ? details.diets.map((diet) => (<li key={diet}>{diet}</li>)): (<p>Unfortunately, this recipe has no diet registered</p>)}
     </ul>
+    </div>
+    <div>
+        <h2>Dish types:</h2>
+        <p>{details.dish && details.dish.map((e)=> e).join(", ")}</p>
     </div>
     <div className="currentSummary">
         <h2>Summary:</h2>
