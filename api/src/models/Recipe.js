@@ -30,15 +30,11 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       defaultValue: "If time is not here, maybe the summary may tell you how much it takes"
     },
-    cheap:{
-      type: DataTypes.BOOLEAN,
-      allowNull: true
-    },
     image:{
       type: DataTypes.STRING,
     },
     summary: {
-      type: DataTypes.TEXT,//!datatypes.string(255)
+      type: DataTypes.TEXT,
       defaultValue: "The creator of this recipe aparently could not write any summary, sorry:p", 
     },
     steps: {

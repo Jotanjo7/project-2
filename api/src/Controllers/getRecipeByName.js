@@ -39,10 +39,13 @@ const getRecipeByName = async(name) =>{
         const namedRecipe = dbRecipes.filter((recipe) =>recipe.name.includes(name.toLowerCase()))
         console.log(dbRecipes);
 
-        return [...namedApiRecipes, ...namedRecipe];
+        // return [...namedApiRecipes, ...namedRecipe];
+        if(!namedApiRecipes) return namedRecipe;
+        else if(namedApiRecipes.length && namedRecipe) return [...namedApiRecipes, ...namedRecipe]
+        else throw Error("nothing here")
 
     }
-    catch(err){console.log(err)}
+    catch(err){throw Error(err)}
 }
 
 module.exports = getRecipeByName;

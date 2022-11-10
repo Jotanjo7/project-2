@@ -45,6 +45,7 @@ router.post("/recipes", async(req, res) => {
         res.send(createdRecipe)
 }catch(err){
     console.log(err)
+    res.status(400).send("error al crear receta", err)
 }
 
 })

@@ -26,12 +26,3 @@ return dbDiets;
 
 
 module.exports = {getDiets};
-//     // const diets = {id: 1, name: "gluten free"}
-
-// const types = ["gluten free", "ketogenic", "vegetarian", "lacto vegetarian", "ovo vegetarian", "lacto ovo vegetarian", "vegan", "pescetarian", "paleolithic", "primal", "fodmap friendly", "whole 30", "dairy free"];
-// const [diets, created] = await Diet.findOrCreate({
-//     where: {name: types}
-// })
-
-//     return dbDiets;
-// };

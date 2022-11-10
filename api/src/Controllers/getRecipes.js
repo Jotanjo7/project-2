@@ -6,7 +6,7 @@ const { KEY, KEY2 } = process.env;
 const getRecipes = async() => {
     const data = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&addRecipeInformation=true&number=100`);
     const apiRecipes = data.data.results;
-    const formatRecipes = apiRecipes.map((rec)=> ({//analized: {name, steps:[{},{},{}]}
+    const formatRecipes = apiRecipes.map((rec)=> ({
         id: rec.id,
         name: rec.title,
         credits: rec.creditsText,
@@ -28,7 +28,7 @@ const getRecipes = async() => {
             },
         ],
     });
-
+//!agregar validacion de vbase de datos y api
     return [...formatRecipes, ...dbRecipes]
     
 }
