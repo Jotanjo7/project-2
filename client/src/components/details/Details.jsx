@@ -27,7 +27,9 @@ export const Details = (props) => {
     <div className="currentDiets">
     <h2>Diets:</h2>
     <ul>
-        {details.diets && details.diets.length ? details.diets.map((diet) => (<li key={diet}>{diet}</li>)): (<p>Unfortunately, this recipe has no diet registered</p>)}
+        {details.diets && details.diets.length 
+        ? details.diets.map((diet) => (<li key={diet}>{diet}</li>))
+        : (<p>Unfortunately, this recipe has no diet registered</p>)}
     </ul>
     </div>
     <div>
