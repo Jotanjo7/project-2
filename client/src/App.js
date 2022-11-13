@@ -6,7 +6,7 @@ import Home from "./components/home/Home";
 import { Details } from "./components/details/Details";
 import { NavBar } from "./components/navbar/NavBar";
 import { LandingPage } from "./components/landingPage/LandingPage";
-// import { NotFound } from "./components/notound/NotFound"
+// import { NotFound } from "./components/notound/NotFound" //!error404 ongoing
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route exact path="/home" component={ Home } />
         <Route path="/forms" component={ Forms } />
         <Route path="/recipes/:id" component={ Details } />
-        {/* <Route exact path="*" element={<NotFound/>} /> */}
+        {/* <Route exact path="*" element={<NotFound/>} />//!ongoing */ }
 
     </div>
     </Fragment>

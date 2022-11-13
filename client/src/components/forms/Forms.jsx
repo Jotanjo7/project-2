@@ -25,7 +25,7 @@ export const Forms = () => {
     const handleChange= (e) => {
         setInput({
             ...input, [e.target.name]: e.target.value,
-        })//TODO:pendiente armar validador para errores
+        })
         setError(
             validator({
                 ...input, [e.target.name]: e.target.value,
@@ -74,8 +74,11 @@ export const Forms = () => {
         setInput((state)=>{
             console.log(state)
             if(e.target.name === "diets"){
-
-                return {...state, diets: [...state.diets, e.target.value]}
+                if(!state.diets.includes(e.target.value)){
+                return {...state, diets: [...state.diets, e.target.value]}}
+                else{
+                    return {...state}
+                }
             } else{
                 return {
                     ...state, [e.target.name]: e.target.value
