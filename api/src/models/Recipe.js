@@ -37,6 +37,9 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       defaultValue: "The creator of this recipe aparently could not write any summary, sorry:p", 
     },
+    // diets:{
+    //   type: DataTypes.TEXT
+    // },
     steps: {
       type: DataTypes.TEXT,
       defaultValue: "Aparently the creator was not able to give us the secret of this recipe, sorry:p" 
