@@ -1,7 +1,7 @@
 const express = require("express");
 const { Diet } = require("../db");
 const router = express.Router();
-const { getDiets } = require("../Controllers/getDiets")
+const { getDiets } = require("../controllers/getDiets")
 
 
 router.get("/diets", async(req, res) => {
