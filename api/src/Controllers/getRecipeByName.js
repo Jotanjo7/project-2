@@ -26,6 +26,10 @@ const getRecipeByName = async(name) =>{
                 })
             })
         }
+        let search;
+        if(namedApiRecipes.length){
+            search = namedApiRecipes.filter((rec) => rec.name.includes(name) === true)
+        }
         const dbRecipes = await Recipe.findAll({
             
             include: [
@@ -37,12 +41,9 @@ const getRecipeByName = async(name) =>{
         });
         
         const namedRecipe = dbRecipes.filter((recipe) =>recipe.name.includes(name.toLowerCase()))
-        console.log(dbRecipes);
 
         // return [...namedApiRecipes, ...namedRecipe];
-        if(!namedApiRecipes) return namedRecipe;
-        else if(namedApiRecipes.length && namedRecipe) return [...namedApiRecipes, ...namedRecipe]
-        else throw Error("nothing here")
+       if(!search.length && !namedRecipe) throw new Error("not found recipe");
 
     }
     catch(err){return err.message}
