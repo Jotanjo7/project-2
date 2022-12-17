@@ -77,5 +77,10 @@ router.delete("/recipes/:id", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+// router.patch("/recipes/:id", async(req, res) => {
+//   const { id } = req.params;
+//   const { credits, diets, name, score, source, steps, summary, time } = req.body;
+
+// })!ongoing
 
 module.exports = router;
