@@ -1,6 +1,5 @@
 const { Recipe, Diet, Op} = require("../db");
 const axios = require("axios");
-const { KEY, KEY2 } = process.env;
 
 
 const getRecipeByName = async(name) =>{
@@ -28,7 +27,7 @@ const getRecipeByName = async(name) =>{
         }
         let search;
         if(namedApiRecipes.length){
-            search = namedApiRecipes.filter((rec) => rec.name.includes(name) === true)
+            search = namedApiRecipes.filter((rec) => rec.name.includes(name) === true || rec.name.includes(name.slice(1)) === true)
         }
         const dbRecipes = await Recipe.findAll({
             
@@ -43,7 +42,9 @@ const getRecipeByName = async(name) =>{
         const namedRecipe = dbRecipes.filter((recipe) =>recipe.name.includes(name.toLowerCase()))
 
         // return [...namedApiRecipes, ...namedRecipe];
-       if(!search.length && !namedRecipe) throw new Error("not found recipe");
+       if(!search.length && !namedRecipe.length) throw new Error("not found recipe");
+       else if(!search.length && namedRecipe) return [...namedRecipe];
+       else return [...search, ...namedRecipe]
 
     }
     catch(err){return err.message}

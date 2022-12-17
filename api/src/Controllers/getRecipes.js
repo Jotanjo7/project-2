@@ -11,6 +11,7 @@ const getRecipes = async() => {
         credits: rec.creditsText,
         score: rec.healthScore,
         source: rec.sourceUrl,
+        dish: rec.dishTypes,
         time: rec.readyInMinutes,
         cheap: rec.cheap,
         summary: rec.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),

@@ -10,7 +10,8 @@ const getRecipeById = require("../Controllers/getRecipeById");
 router.get("/recipes/:id", async(req, res) =>{
   const { id }  = req.params;
   try{
-    const recipeId = await getRecipeById(id);
+    const recipes = await getRecipes();
+    const recipeId = recipes.filter((rec) => rec.id == id);
     res.send(recipeId);
   }
   catch(err){
@@ -25,7 +26,7 @@ router.get("/recipes", async(req, res)=> {
             const namedRecipe = await getRecipeByName(name);
             res.send(namedRecipe);
         }catch(err){
-            res.status(400).send(err.message);
+            res.status(400).send(err);
         }
 
     }
