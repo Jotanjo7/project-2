@@ -5,11 +5,11 @@ const { KEY, KEY2 } = process.env;
 
 const getRecipeByName = async(name) =>{
     try{
-        const namedApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&addRecipeInformation=true&query=${name}`);
+        const namedApi = await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`);
         const { results } = namedApi.data;
         let namedApiRecipes = [];
         if(results.length > 0){
-            const response = results.map((rec) => {
+            results.map((rec) => {
                 namedApiRecipes.push({
                     id: rec.id,
                     name: rec.title,
@@ -45,7 +45,7 @@ const getRecipeByName = async(name) =>{
         else throw Error("nothing here")
 
     }
-    catch(err){throw Error(err)}
+    catch(err){return err.message}
 }
 
 module.exports = getRecipeByName;

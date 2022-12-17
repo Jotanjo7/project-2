@@ -16,7 +16,7 @@ const getRecipes = async() => {
         summary: rec.summary.replaceAll(/<(“[^”]”|'[^’]’|[^'”>])*>/g, ""),
         image: rec.image,
         steps: (rec.analyzedInstructions[0] && rec.analyzedInstructions[0].steps?rec.analyzedInstructions[0].steps.map(item=>item.step).join(" || "):'In this recipe, there are not steps'),
-        diets: rec.diets
+        diets: rec.diets? rec.diets.map((diet) => diet) : "This one has no kind of diet:p"
     }));
     
     const dbRecipes = await Recipe.findAll({
