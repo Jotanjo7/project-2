@@ -4,7 +4,7 @@ const axios = require("axios");
 
 const getRecipeByName = async(name) =>{
     try{
-        const namedApi = await axios.get(`https://run.mocky.io/v3/84b3f19c-7642-4552-b69c-c53742badee5`);
+        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&addRecipeInformation=true&query=${name}`);
         const { results } = namedApi.data;
         let namedApiRecipes = [];
         if(results.length > 0){
