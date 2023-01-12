@@ -10,7 +10,9 @@ router.get("/recipes/:id", async (req, res) => {
   try {
     const recipes = await getRecipes();
     const recipeId = recipes.filter((rec) => rec.id == id);
-    res.send(recipeId);
+    if(recipeId.length){
+    return res.send(recipeId);
+  } throw new Error("no recipes with that ID");
   } catch (err) {
     res.status(400).send(err.message);
   }
