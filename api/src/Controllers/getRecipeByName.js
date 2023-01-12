@@ -1,10 +1,11 @@
 const { Recipe, Diet, Op} = require("../db");
 const axios = require("axios");
+const {KEY} = process.env;
 
 
 const getRecipeByName = async(name) =>{
     try{
-        axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&addRecipeInformation=true&query=${name}`);
+        const namedApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${KEY}&addRecipeInformation=true&query=${name}`);
         const { results } = namedApi.data;
         let namedApiRecipes = [];
         if(results.length > 0){
@@ -25,10 +26,6 @@ const getRecipeByName = async(name) =>{
                 })
             })
         }
-        let search;
-        if(namedApiRecipes.length){
-            search = namedApiRecipes.filter((rec) => rec.name.includes(name) === true || rec.name.includes(name.slice(1)) === true)
-        }
         const dbRecipes = await Recipe.findAll({
             
             include: [
@@ -42,9 +39,11 @@ const getRecipeByName = async(name) =>{
         const namedRecipe = dbRecipes.filter((recipe) =>recipe.name.includes(name.toLowerCase()))
 
         // return [...namedApiRecipes, ...namedRecipe];
-       if(!search.length && !namedRecipe.length) throw new Error("not found recipe");
-       else if(!search.length && namedRecipe) return [...namedRecipe];
-       else return [...search, ...namedRecipe]
+       if(!namedApiRecipes && !namedRecipe) throw new Error("there's no recipe in here");
+       if(!namedApiRecipes && namedRecipe.length) return [...namedRecipe];
+       if(namedApiRecipes && !namedRecipe) return [...namedApiRecipes];
+       
+       return [...namedApiRecipes, ...namedRecipe]; 
 
     }
     catch(err){return err.message}
